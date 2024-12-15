@@ -2,6 +2,7 @@
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
+      "/SmartDashboard/Mech": "Mechanism2d",
       "Robot/RobotContainer/Arm/armController": "PIDController",
       "Robot/RobotContainer/Intake/controller": "PIDController",
       "Robot/m_robotContainer/Arm/armController": "PIDController"
@@ -21,8 +22,7 @@
             "open": true
           },
           "open": true
-        },
-        "open": true
+        }
       }
     }
   },

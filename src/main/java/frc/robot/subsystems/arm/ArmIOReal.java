@@ -13,6 +13,7 @@ import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.math.geometry.Rotation2d;
 import frc.robot.subsystems.arm.Arm.ArmConfig;
 
+// This is the *real* implementation of an arm (eg. this will allow the code to control a REAL arm with REAL sparkmax's and motors and stuff)
 @Logged
 public class ArmIOReal implements ArmIO {
     public static final ArmConfig config = new ArmConfig(0.05, 0, 0, 0);

@@ -10,37 +10,28 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.arm.Arm;
+import frc.robot.subsystems.armdemo.ArmDemo;
+import frc.robot.subsystems.armdemo.ArmDemoIOReal;
+import frc.robot.subsystems.armdemo.ArmDemoIOSim;
 import frc.robot.subsystems.intake.Intake;
 
 @Logged
 public class RobotContainer {
-  @Logged(name = "Intake")
-  public final Intake intake = Intake.disable();
-  @Logged(name = "Arm")
-  public final Arm arm = Arm.create(); 
-  
-  private final CommandXboxController driver = new CommandXboxController(0);
-  private final CommandXboxController manipulator = new CommandXboxController(1);
+
+  private final ArmDemo demoArm; 
 
   public RobotContainer() {
-    arm.setDefaultCommand(
-      arm.goToAngle(20)
-      // arm.tune()
-      ); 
-    intake.setDefaultCommand(intake.stop());
+
+    demoArm = new ArmDemo(new ArmDemoIOReal()); // when you're controlling a real arm
+    // demoArm = new ArmDemo(new ArmDemoIOSim()); // for a simulated arm
+
     configureBindings();
   }
 
   private void configureBindings() {
-    driver.a().whileTrue(arm.goToAngle(80)); 
-    // manipulator
-    //   .rightBumper()
-    //   .whileTrue(intake.runRollers()); // notice here there's an implicit end condition: right bumper is released
   }
 
   public Command getAutonomousCommand() {
-    // return Commands.none(); 
-    return intake.runRollers()
-      .until(intake.hasNote); // notice the trigger is used to provide an end condition for the auto to continue
+    return Commands.none(); 
   }
 }
